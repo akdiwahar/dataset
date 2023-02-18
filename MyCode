@@ -1,0 +1,20 @@
+m=[]
+rolling=5
+for app in range(1,rolling):
+  m.append("0")
+for eachRow in range(rolling-1,df1.shape[0]):
+  #print(df1.iloc[eachRow]["Pax"], df1.iloc[eachRow-1]["Pax"], df1.iloc[eachRow-2]["Pax"])
+  mi=0
+  for eachRolling in range(0,rolling):
+    mi+=df1.iloc[eachRow-eachRolling]["Pax"]
+  mi=mi/rolling
+  m.append(mi)
+  '''
+  if (eachRow>10):
+    break
+  '''
+'''
+for app in range(1,rolling):
+  m.append("0")
+'''
+df1["moving"]=m
