@@ -18,3 +18,40 @@ for app in range(1,rolling):
   m.append("0")
 '''
 df1["moving"]=m
+
+
+
+=============2023-03-11
+
+def findYpred(x,y,n_order):
+  A_df=[]
+  B_df=[]
+  for eachrow in range(0,n_order+1):
+    n_ord=n_order+eachrow
+    eachRowElement=[]
+    for eachequation in range(0,n_order+1):
+      if (n_ord==0):
+        eachRowElement.append(len(x))
+      else:
+        eachRowElement.append(sum(x ** n_ord))
+      n_ord=n_ord-1
+    A_df.append(eachRowElement)
+  #print(A_df)
+  #print(np.linalg.det(A_df))
+  for eachrow in range(0,n_order+1):
+    B_df.append(sum(y*(x **eachrow)))
+  A_df=np.array(A_df)
+  #print(A_df)
+  #coeff=np.power(A_df,-1).dot(B_df)
+  coeff=np.linalg.inv(A_df).dot(B_df)
+  ypred=[]
+  #ypred_df2=second_order[0]*x*x + second_order[1]*x + second_order[2]
+  for eachCoeff in range(0,n_order+1): 
+    if (eachCoeff==0):
+      ypred=coeff[eachCoeff]*(x ** (n_order-eachCoeff))
+    else:
+       ypred=ypred+coeff[eachCoeff]*(x ** (n_order-eachCoeff))
+
+  return ypred,A_df,B_df
+
+ypred,A_df,B_df=findYpred(x[0:15],y[0:15],6)
