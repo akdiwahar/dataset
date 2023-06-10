@@ -1,3 +1,5 @@
+HEAD1
+##HEADER##
 import os
 import warnings
 warnings.filterwarnings('ignore')
@@ -5,10 +7,17 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 plt.style.use('fivethirtyeight')
+
+###ENDOFSEGMENT###
+HEAD2
+##HEADER##
 from pylab import rcParams
 rcParams['figure.figsize'] = 10, 6
 from statsmodels.tsa.stattools import adfuller
 from statsmodels.tsa.seasonal import seasonal_decompose
+###ENDOFSEGMENT###
+HEAD3
+##HEADER##
 # from statsmodels.tsa.arima_model import ARIMA
 from statsmodels.tsa.arima.model import ARIMA
 from pmdarima.arima import auto_arima
